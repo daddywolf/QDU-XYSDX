@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+
+    <filter>
+        <filter-name>xssFilter</filter-name>
+        <filter-class>filter.XssFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>xssFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <servlet>
+        <description>用于生成验证码</description>
+        <display-name>生成验证码</display-name>
+        <servlet-name>GetCaptcha</servlet-name>
+        <servlet-class>servlet.GetCaptcha</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>GetCaptcha</servlet-name>
+        <url-pattern>/getcaptcha.sl</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <description>用于生成短信验证码</description>
+        <display-name>生成短信验证码</display-name>
+        <servlet-name>GetSMSCaptcha</servlet-name>
+        <servlet-class>servlet.GetSMSCaptcha</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>GetSMSCaptcha</servlet-name>
+        <url-pattern>/GetSMSCaptcha</url-pattern>
+    </servlet-mapping>
+</web-app>
